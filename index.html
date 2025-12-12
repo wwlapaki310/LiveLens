@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LiveLens - リアルタイム視覚記述</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>👁️ LiveLens</h1>
+            <p class="subtitle">リアルタイム視覚記述サービス</p>
+        </header>
+
+        <!-- Mode Selector -->
+        <div class="mode-selector">
+            <button id="cloudMode" class="mode-btn active">☁️ クラウドAI</button>
+            <button id="localMode" class="mode-btn">📱 オンデバイス</button>
+        </div>
+
+        <!-- Camera Section -->
+        <div class="camera-section">
+            <video id="camera" autoplay playsinline></video>
+            <canvas id="canvas" style="display: none;"></canvas>
+            <button id="startBtn" class="action-btn">📷 カメラ起動</button>
+            <button id="stopBtn" class="action-btn" style="display: none;">⏸️ 停止</button>
+        </div>
+
+        <!-- Settings -->
+        <div class="settings">
+            <label>
+                <span>キャプチャ間隔:</span>
+                <select id="interval">
+                    <option value="1000">1秒</option>
+                    <option value="2000" selected>2秒</option>
+                    <option value="3000">3秒</option>
+                    <option value="5000">5秒</option>
+                </select>
+            </label>
+        </div>
+
+        <!-- Description Panel -->
+        <div class="description-panel">
+            <h2>📝 視覚記述</h2>
+            <div id="status" class="status">準備完了</div>
+            <div id="descriptions" class="descriptions"></div>
+        </div>
+
+        <!-- Info Panel -->
+        <div class="info-panel">
+            <p>💡 <strong>使い方:</strong></p>
+            <ol>
+                <li>AIモードを選択（クラウドまたはオンデバイス）</li>
+                <li>カメラ起動ボタンをクリック</li>
+                <li>カメラを対象物に向ける</li>
+                <li>自動的に視覚記述が表示されます</li>
+            </ol>
+            <p class="note">
+                ⚠️ クラウドモードは<code>config.js</code>にGemini APIキーが必要です
+            </p>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
